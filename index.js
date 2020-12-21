@@ -7,9 +7,14 @@ app.get('/', (req, res) => {
 });
 
 io.on('connection', (socket) => {
-	io.emit('user joined', 'new user joined the chat');
+	io.emit('user joined', 'user joined the group');
+
 	socket.on('chat message', (msg) => {
 		io.emit('chat message', msg);
+	});
+
+	socket.on('disconnect', () => {
+		io.emit('user left', 'user has left the group');
 	});
 });
 
