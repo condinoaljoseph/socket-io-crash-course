@@ -68,6 +68,10 @@
 			socket.on('user joined', function (msg) {
 				$('#messages').append($('<li>').text(msg));
 			});
+
+			socket.on('user left', function (msg) {
+				$('#messages').append($('<li>').text(msg));
+			});
 		});
 	</script>
 </html>
