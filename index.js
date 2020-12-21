@@ -7,8 +7,9 @@ app.get('/', (req, res) => {
 });
 
 io.on('connection', (socket) => {
+	io.emit('user joined', 'new user joined the chat');
 	socket.on('chat message', (msg) => {
-		console.log('message:' + msg);
+		io.emit('chat message', msg);
 	});
 });
 
